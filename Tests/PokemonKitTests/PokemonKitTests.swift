@@ -2,10 +2,22 @@ import XCTest
 @testable import PokemonKit
 
 final class PokemonKitTests: XCTestCase {
+    
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(PokemonKit().text, "Hello, World!")
+        let avatar = PKMNType(
+            id: "Avatar",
+            effectivenessAgainstSelf: .regular,
+            effectivenessAgainstOtherTypes: [
+                .fire: .superEffective,
+                .water: .superEffective
+            ],
+            effectivenessOfOtherTypes: [
+                .fire: .notVeryEffective,
+                .water: .notVeryEffective,
+                .dark: .superEffective
+            ]
+        )
+        
+        XCTAssert(PKMNType.fire.effectiveness(against: avatar) == .notVeryEffective)
     }
 }
