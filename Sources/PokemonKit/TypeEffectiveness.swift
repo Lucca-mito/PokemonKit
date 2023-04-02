@@ -5,7 +5,7 @@
 //  Created by Lucca de Mello on 4/1/23.
 //
 
-/// The effectiveness of a damaging move against a single ``Type``.
+/// The effectiveness of a damaging move against a single ``PKMNType``.
 enum PKMNTypeEffectiveness: Double {
     case superEffective = 2
     case regular = 1
