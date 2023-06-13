@@ -6,16 +6,16 @@
 //
 
 /// One of the 18 standard Pokémon Types, or a custom Type.
-struct PKMNType: Identifiable, Hashable {
+public struct PKMNType: Identifiable, Hashable {
     /// The unique name identifying this Type.
-    let id: String
+    public let id: String
     
     private let effectivenessAgainst: [ID: PKMNTypeEffectiveness]
     
     /// This field is only used by custom Types. It's useful, for example, to make a standard Type super effective against a custom Type.
     private let effectivenessOf: [ID: PKMNTypeEffectiveness]
     
-    init(id: ID,
+    public init(id: ID,
          effectivenessAgainst: [ID: PKMNTypeEffectiveness] = [:],
          effectivenessOf: [ID: PKMNTypeEffectiveness] = [:]
     ) {
@@ -24,11 +24,11 @@ struct PKMNType: Identifiable, Hashable {
         self.effectivenessOf = effectivenessOf
     }
     
-    /// This initializer is more convenient than ``init(id:effectivenessAgainst:effectivenessOf)`` since it does not require getting the IDs of any Types. However, this initializer cannot be used to declare multiple Types that form a cycle. To do this, use ``init(id:effectivenessAgainst:effectivenessOf)`` instead.
-    init(id: ID,
+    /// This initializer is more convenient than ``init(id:effectivenessAgainst:effectivenessOf:)`` since it does not require getting the IDs of any Types. However, this initializer cannot be used to declare multiple Types that form a cycle. To do this, use ``init(id:effectivenessAgainst:effectivenessOf:)`` instead.
+    public init(id: ID,
          effectivenessAgainstSelf: PKMNTypeEffectiveness = .notVeryEffective,
-         effectivenessAgainstOtherTypes: [Self: PKMNTypeEffectiveness] = [:],
-         effectivenessOfOtherTypes: [Self: PKMNTypeEffectiveness] = [:]
+         effectivenessAgainstOtherTypes: [PKMNType: PKMNTypeEffectiveness] = [:],
+         effectivenessOfOtherTypes: [PKMNType: PKMNTypeEffectiveness] = [:]
     ) {
         // Convert [PKMNType: PKMNTypeEffectiveness] to [ID: PKMNTypeEffectiveness]
         var effectivenessAgainst =
@@ -42,7 +42,7 @@ struct PKMNType: Identifiable, Hashable {
         self.init(id: id, effectivenessAgainst: effectivenessAgainst, effectivenessOf: effectivenessOf)
     }
     
-    func effectiveness(against defendingType: Self) -> PKMNTypeEffectiveness {
+    public func effectiveness(against defendingType: Self) -> PKMNTypeEffectiveness {
         switch (effectivenessAgainst[defendingType.id], defendingType.effectivenessOf[id]) {
             
         case (.some(let effectiveness), nil), (nil, .some(let effectiveness)):
@@ -69,7 +69,7 @@ fileprivate extension String {
 
 extension PKMNType {
     /// The Grass Type.
-    static let grass = PKMNType(
+    public static let grass = PKMNType(
         id: .grassId,
         effectivenessAgainst: [
             .grassId: .notVeryEffective,
@@ -79,7 +79,7 @@ extension PKMNType {
     )
     
     /// The Fire Type.
-    static let fire = PKMNType(
+    public static let fire = PKMNType(
         id: .fireId,
         effectivenessAgainst: [
             .grassId: .superEffective,
@@ -89,7 +89,7 @@ extension PKMNType {
     )
     
     /// The Water Type.
-    static let water = PKMNType(
+    public static let water = PKMNType(
         id: .waterId,
         effectivenessAgainst: [
             .grassId: .notVeryEffective,
@@ -99,12 +99,12 @@ extension PKMNType {
     )
     
     /// The Dark Type.
-    static let dark = PKMNType(id: .darkId)
+    public static let dark = PKMNType(id: .darkId)
     
     // Etc...
 }
 
 extension PKMNType: CaseIterable {
     /// All standard Types.
-    static let allCases: [Self] = [.grass, .fire, .water, .dark]
+    public static let allCases: [Self] = [.grass, .fire, .water, .dark]
 }

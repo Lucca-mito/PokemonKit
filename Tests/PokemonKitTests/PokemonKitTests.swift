@@ -1,5 +1,5 @@
 import XCTest
-@testable import PokemonKit
+import PokemonKit
 
 final class PokemonKitTests: XCTestCase {
     

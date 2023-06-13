@@ -6,7 +6,7 @@
 //
 
 extension PKMNSpecies {
-    static let Meowth = PKMNSpecies(
+    public static let Meowth = PKMNSpecies(
         id: "Meowth",
         forms: [.regular, .Regional.alolan, .Regional.galarian, .gigantamax]
     )

@@ -7,14 +7,14 @@
 
 extension PKMNForm {
     // Maybe move to Abilities/FlowerGift.swift?
-    enum FlowerGift {
-        static let overcast = PKMNForm(description: "Overcast")
-        static let sunshine = PKMNForm(description: "Sunshine")
+    public enum FlowerGift {
+        public static let overcast = PKMNForm(description: "Overcast")
+        public static let sunshine = PKMNForm(description: "Sunshine")
     }
 }
 
 extension PKMNSpecies {
-    static let Cherrim = PKMNSpecies(
+    public static let Cherrim = PKMNSpecies(
         id: "Cherrim",
         forms: [.FlowerGift.overcast, .FlowerGift.sunshine]
     )

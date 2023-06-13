@@ -6,15 +6,15 @@
 //
 
 extension PKMNForm {
-    enum Cloak {
-        static let plant = PKMNForm(description: "Plant Cloak")
-        static let sandy = PKMNForm(description: "Sandy Cloak")
-        static let trash = PKMNForm(description: "Trash Cloak")
+    public enum Cloak {
+        public static let plant = PKMNForm(description: "Plant Cloak")
+        public static let sandy = PKMNForm(description: "Sandy Cloak")
+        public static let trash = PKMNForm(description: "Trash Cloak")
     }
 }
 
 extension PKMNSpecies {
-    static let Burmy = PKMNSpecies(
+    public static let Burmy = PKMNSpecies(
         id: "Burmy",
         forms: [.Cloak.plant, .Cloak.sandy, .Cloak.trash]
     )

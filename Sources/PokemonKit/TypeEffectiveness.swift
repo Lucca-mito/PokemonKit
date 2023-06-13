@@ -6,13 +6,13 @@
 //
 
 /// The effectiveness of a damaging move against a single ``PKMNType``.
-enum PKMNTypeEffectiveness: Double {
+public enum PKMNTypeEffectiveness: Double {
     case superEffective = 2
     case regular = 1
     case notVeryEffective = 0.5
     case noEffect = 0
     
-    var message: String? {
+    public var message: String? {
         switch self {
         case .superEffective:
             return "It's super effective!"

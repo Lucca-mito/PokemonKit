@@ -6,7 +6,7 @@
 //
 
 extension PKMNSpecies {
-    static let Charizard = PKMNSpecies(
+    public static let Charizard = PKMNSpecies(
         id: "Charizard",
         forms: [.regular, .Mega.x, .Mega.y, .gigantamax]
     )

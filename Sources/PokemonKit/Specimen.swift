@@ -10,5 +10,3 @@ struct PKMNSpecimen {
     var nickname: String
     var form: PKMNForm?
 }
-
-let myBurmy = PKMNSpecimen(species: .Burmy, nickname: "Bruh", form: .Cloak.plant)

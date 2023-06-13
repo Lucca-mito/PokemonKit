@@ -6,7 +6,7 @@
 //
 
 extension PKMNSpecies {
-    static let Wormadam = PKMNSpecies(
+    public static let Wormadam = PKMNSpecies(
         id: "Wormadam",
         forms: PKMNSpecies.Burmy.forms
     )
